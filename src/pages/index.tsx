@@ -41,9 +41,8 @@ export default function Home() {
                 className="rounded bg-teal-500 px-4 py-2 font-bold leading-relaxed text-white transition-colors hover:bg-teal-400 disabled:bg-gray-400 disabled:text-gray-200"
                 disabled={fetching}
               >
-                {fetching
-                  ? "Fetching from Banking.Edwardjones.com"
-                  : "Fetch from Banking.Edwardjones.com"}
+                GET Call to Banking.Edwardjones.com and Set-Cookie with no
+                domain
               </button>
             </div>
             <div className="h-[65dvh] w-full rounded border shadow-md">
