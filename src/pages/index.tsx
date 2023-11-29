@@ -9,9 +9,20 @@ const font = Overpass({
 
 export default function Home() {
   const [fetching, setFetching] = useState(false);
+  const handleFetchfromBankingOA = useCallback(() => {
+    setFetching(true);
+    fetch("/api/nosetcookie", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFetching(false);
+        console.log(data);
+      });
+  }, []);
   const handleFetchfromBanking = useCallback(() => {
     setFetching(true);
-    fetch("https://banking.bluebuckdesigns.xyz/api/fetchsomething", {
+    fetch("https://banking.bluebuckdesigns.xyz/api/nosetcookie", {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -35,14 +46,20 @@ export default function Home() {
         </nav>
         <div className="grid grow place-items-center px-20">
           <div className="flex w-full flex-col">
-            <div className="mb-8">
+            <div className="mb-8 flex gap-8">
               <button
                 onClick={handleFetchfromBanking}
                 className="rounded bg-teal-500 px-4 py-2 font-bold leading-relaxed text-white transition-colors hover:bg-teal-400 disabled:bg-gray-400 disabled:text-gray-200"
                 disabled={fetching}
               >
-                GET Call to Banking.Edwardjones.com and Set-Cookie with no
-                domain
+                GET Call to Banking.Edwardjones.com and No Set-Cookie
+              </button>
+              <button
+                onClick={handleFetchfromBankingOA}
+                className="rounded bg-amber-500 px-4 py-2 font-bold leading-relaxed text-white transition-colors hover:bg-amber-400 disabled:bg-gray-400 disabled:text-gray-200"
+                disabled={fetching}
+              >
+                GET Call to OnlineAccess.Edwardjones.com
               </button>
             </div>
             <div className="h-[65dvh] w-full rounded border shadow-md">
