@@ -11,7 +11,9 @@ export default function Home() {
   const [fetching, setFetching] = useState(false);
   const handleFetchfromBanking = useCallback(() => {
     setFetching(true);
-    fetch("https://banking.bluebuckdesigns.xyz/api/fetchsomething")
+    fetch("https://banking.bluebuckdesigns.xyz/api/fetchsomething", {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setFetching(false);
