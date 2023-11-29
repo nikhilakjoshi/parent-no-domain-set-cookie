@@ -29,6 +29,10 @@ export default function Home() {
       .then((data) => {
         setFetching(false);
         console.log(data);
+      })
+      .catch((err) => {
+        setFetching(false);
+        console.error(err);
       });
   }, []);
   return (
